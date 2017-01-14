@@ -1,6 +1,8 @@
 package com.vincentcraigolsen.wordfind.objects;
 
-public class WordTrie {
+import java.io.Serializable;
+
+public class WordTrie implements Serializable {
 
     private WordTrieNode root;
 
@@ -9,22 +11,22 @@ public class WordTrie {
     }
 
     public void insert(String word) {
-            WordTrieNode parent = root;
+        WordTrieNode parent = root;
 
-            for (int charPosition = 0; charPosition < word.length(); charPosition++) {
+        for (int charPosition = 0; charPosition < word.length(); charPosition++) {
 
-                char letter = word.charAt(charPosition);
-                int childIndex = positionInTheAlphabetOf(letter);
+            char letter = word.charAt(charPosition);
+            int childIndex = positionInTheAlphabetOf(letter);
 
-                if (parent.children[childIndex] == null) {
-                    WordTrieNode temp = new WordTrieNode();
-                    parent.children[childIndex] = temp;
-                    parent = temp;
-                } else {
-                    parent = parent.children[childIndex];
-                }
+            if (parent.children[childIndex] == null) {
+                WordTrieNode temp = new WordTrieNode();
+                parent.children[childIndex] = temp;
+                parent = temp;
+            } else {
+                parent = parent.children[childIndex];
             }
-            parent.isEndOfAWord = true;
+        }
+        parent.isEndOfAWord = true;
     }
 
     public boolean contains(String word) {
