@@ -13,16 +13,35 @@ public class TrieDictionaryWordSearcherTest {
     TrieDictionaryWordSearcher trieDictionaryWordSearcher = new TrieDictionaryWordSearcher(testDictionary, testLetterGrid);
 
     @Test
+    public void when_grid_has_one_word_that_matches_the_dictionary_then_trieToFindWords_returns_that_match() {
+        String[][] grid = new String[][]{
+            {"r", "a"},
+            {"c", "k"}};
+
+        WordTrie dictionary = new WordTrie();
+        dictionary.insert("rack");
+        dictionary.insert("car");
+
+        trieDictionaryWordSearcher = new TrieDictionaryWordSearcher(dictionary, grid);
+
+        Set<String> expectedMatches = new TreeSet<>();
+        expectedMatches.add("rack");
+        expectedMatches.add("car");
+
+        Assert.assertEquals(expectedMatches, trieDictionaryWordSearcher.trieToFindWords());
+    }
+
+    @Test
     public void when_grid_has_eight_words_that_match_the_dictionary_then_trieToFindWords_returns_ordered_set_of_those_matches() {
+
         Set<String> expectedMatches = createExpectedMatches();
 
         Assert.assertEquals(expectedMatches, trieDictionaryWordSearcher.trieToFindWords());
-
     }
 
     @Test
     public void when_coordinates_are_within_the_grid_and_not_a_parent_then_isValid_returns_true() {
-
+        trieDictionaryWordSearcher = new TrieDictionaryWordSearcher(testDictionary, testLetterGrid);
         Assert.assertTrue(trieDictionaryWordSearcher.isValidCell(2, 1));
     }
 
@@ -31,12 +50,11 @@ public class TrieDictionaryWordSearcherTest {
         trieDictionaryWordSearcher.parentGrid[0][2] = true;
         Assert.assertFalse(trieDictionaryWordSearcher.isValidCell(0, 2));
     }
-    
+
     @Test
     public void when_coordinates_are_outside_the_grid_then_isValidCell_returns_false() {
-
         Assert.assertFalse(trieDictionaryWordSearcher.isValidCell(99, 99));
-    }    
+    }
 
     private Set<String> createExpectedMatches() {
         Set<String> expectedMatches = new TreeSet<>();
