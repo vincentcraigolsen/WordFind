@@ -41,7 +41,6 @@ public class TrieDictionaryWordSearcherTest {
 
     @Test
     public void when_coordinates_are_within_the_grid_and_not_a_parent_then_isValid_returns_true() {
-        trieDictionaryWordSearcher = new TrieDictionaryWordSearcher(testDictionary, testLetterGrid);
         Assert.assertTrue(trieDictionaryWordSearcher.isValidCell(2, 1));
     }
 
