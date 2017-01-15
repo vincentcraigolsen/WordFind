@@ -15,14 +15,14 @@ public class WordFind {
 //        long startTime = System.currentTimeMillis();
         
         FileDao fileDao = new FileDao();
-        WordTrie dictionaryTrie = fileDao.getDictionaryIntoTrie(DICTIONARY_FILE_NAME);
-        String[][] letterGrid = fileDao.getGrid(GRID_FILENAME);
+        WordTrie dictionaryTrie = fileDao.getDictionaryIntoTrieFrom(DICTIONARY_FILE_NAME);
+        String[][] letterGrid = fileDao.getGridFrom(GRID_FILENAME);
 
         TrieDictionaryWordSearcher wordSearcher = new TrieDictionaryWordSearcher(dictionaryTrie, letterGrid);
         Set<String> foundWords = wordSearcher.trieToFindWords();
 
         DisplaySolution display = new DisplaySolution();
-        display.printOut(foundWords);
+        display.toConsole(foundWords);
         
 //        long endTime = System.currentTimeMillis();
 //        System.out.println((endTime - startTime) + " milliseconds");

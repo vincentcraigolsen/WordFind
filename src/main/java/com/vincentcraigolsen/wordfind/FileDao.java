@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class FileDao {
 
-    public WordTrie getDictionaryIntoTrie(String englishWordsFileName) throws IOException {
+    public WordTrie getDictionaryIntoTrieFrom(String englishWordsFileName) throws IOException {
         WordTrie words = new WordTrie();
 
         words = createDictionaryTrieWithBufferedReaderFrom(englishWordsFileName, words);
@@ -18,7 +18,7 @@ public class FileDao {
         return words;
     }
 
-    public String[][] getGrid(String gridFileName) throws FileNotFoundException {
+    public String[][] getGridFrom(String gridFileName) throws FileNotFoundException {
         Scanner gridFileScanner = new Scanner(new File(gridFileName));
         Integer rows = 0, columns = 0;
 
