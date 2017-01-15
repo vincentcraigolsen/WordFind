@@ -1,8 +1,6 @@
 package com.vincentcraigolsen.wordfind.objects;
 
-import java.io.Serializable;
-
-public class WordTrie implements Serializable {
+public class WordTrie {
 
     private WordTrieNode root;
 

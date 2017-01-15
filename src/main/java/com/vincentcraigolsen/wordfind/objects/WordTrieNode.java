@@ -1,8 +1,6 @@
 package com.vincentcraigolsen.wordfind.objects;
 
-import java.io.Serializable;
-
-public class WordTrieNode implements Serializable {
+public class WordTrieNode {
 
     boolean isEndOfAWord;
     boolean hasNoChildren;

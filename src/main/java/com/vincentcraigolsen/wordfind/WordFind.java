@@ -12,7 +12,7 @@ public class WordFind {
 
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
 
-        long startTime = System.currentTimeMillis();
+//        long startTime = System.currentTimeMillis();
         
         FileDao fileDao = new FileDao();
         WordTrie dictionaryTrie = fileDao.getDictionaryIntoTrie(DICTIONARY_FILE_NAME);
@@ -24,7 +24,7 @@ public class WordFind {
         DisplaySolution display = new DisplaySolution();
         display.printOut(foundWords);
         
-        long endTime = System.currentTimeMillis();
-        System.out.println((endTime - startTime) + " milliseconds");
+//        long endTime = System.currentTimeMillis();
+//        System.out.println((endTime - startTime) + " milliseconds");
     }
 }
